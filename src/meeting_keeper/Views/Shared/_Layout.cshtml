@@ -3,7 +3,8 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>@ViewData["Title"] - meeting_keeper</title>
+
+        <title>@ViewData["Title"] - Meeting keeper</title>
 
         <environment names="Development">
             <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -17,33 +18,11 @@
         </environment>
     </head>
     <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a asp-controller="Home" asp-action="Index" class="navbar-brand">meeting_keeper</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li><a asp-controller="Home" asp-action="About">About</a></li>
-                        <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    </ul>
-                    @await Html.PartialAsync("_LoginPartial")
-                </div>
-            </div>
-        </div>
+        
+        @Html.Partial("~/Views/Shared/Navigation.cshtml")
+
         <div class="container body-content">
             @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; 2016 - meeting_keeper</p>
-            </footer>
         </div>
 
         <environment names="Development">
@@ -63,6 +42,9 @@
             <script src="~/js/site.min.js" asp-append-version="true"></script>
         </environment>
 
+        @Html.Partial("~/Views/Shared/Footer.cshtml")
+
         @RenderSection("scripts", required: false)
+
     </body>
 </html>

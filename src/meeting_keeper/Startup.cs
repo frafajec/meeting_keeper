@@ -98,6 +98,9 @@ namespace meeting_keeper
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            //Added for init data purposes::DEVELOPMENT
+            //sampleData.Initialize(app.ApplicationServices);
         }
 
         // Entry point for the application.
