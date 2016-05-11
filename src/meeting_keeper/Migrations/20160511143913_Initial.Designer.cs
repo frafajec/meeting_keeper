@@ -8,7 +8,7 @@ using meeting_keeper.Models;
 namespace meeting_keeper.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160510172127_Initial")]
+    [Migration("20160511143913_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,7 +65,40 @@ namespace meeting_keeper.Migrations
                     b.HasAnnotation("Relational:TableName", "AspNetUsers");
                 });
 
+            modelBuilder.Entity("meeting_keeper.Models.Calendar", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<long>("dateModified");
+
+                    b.HasKey("id");
+                });
+
             modelBuilder.Entity("meeting_keeper.Models.Client", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("address");
+
+                    b.Property<long>("dateCreated");
+
+                    b.Property<long>("dateModified");
+
+                    b.Property<long>("earliestDate");
+
+                    b.Property<string>("email");
+
+                    b.Property<string>("name")
+                        .IsRequired();
+
+                    b.Property<int>("numberOfContracts");
+
+                    b.HasKey("id");
+                });
+
+            modelBuilder.Entity("meeting_keeper.Models.Contract", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd();

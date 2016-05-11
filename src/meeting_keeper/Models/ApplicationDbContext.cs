@@ -18,5 +18,7 @@ namespace meeting_keeper.Models
             // Add your customizations after calling base.OnModelCreating(builder);
         }
         public DbSet<Client> Client { get; set; }
+        public DbSet<Contract> Contract { get; set; }
+        public DbSet<Calendar> Calendar { get; set; }
     }
 }

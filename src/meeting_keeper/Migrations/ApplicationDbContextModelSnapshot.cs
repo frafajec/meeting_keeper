@@ -64,7 +64,40 @@ namespace meeting_keeper.Migrations
                     b.HasAnnotation("Relational:TableName", "AspNetUsers");
                 });
 
+            modelBuilder.Entity("meeting_keeper.Models.Calendar", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<long>("dateModified");
+
+                    b.HasKey("id");
+                });
+
             modelBuilder.Entity("meeting_keeper.Models.Client", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("address");
+
+                    b.Property<long>("dateCreated");
+
+                    b.Property<long>("dateModified");
+
+                    b.Property<long>("earliestDate");
+
+                    b.Property<string>("email");
+
+                    b.Property<string>("name")
+                        .IsRequired();
+
+                    b.Property<int>("numberOfContracts");
+
+                    b.HasKey("id");
+                });
+
+            modelBuilder.Entity("meeting_keeper.Models.Contract", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd();
