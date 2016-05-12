@@ -3,16 +3,20 @@
 @{
     ViewData["Title"] = "Calendar";
 }
+@section styles {
+    <link rel="stylesheet" href="~/lib/scheduler/codebase/dhtmlxscheduler.css" />
+    <link rel="stylesheet" href="~/lib/fullcalendar/dist/fullcalendar.css" />
+}
+@section Scripts {
+    <script src="~/lib/moment/min/moment.min.js"></script>
+    <script src="~/lib/fullcalendar/dist/fullcalendar.min.js"></script>
+    <script src="~/lib/scheduler/codebase/dhtmlxscheduler.js"></script>
+    <environment names="Development">
+        <script src="@Url.Content("~/js/calendar.js")"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="@Url.Content("~/js/calendar.min.js")"></script>
+    </environment>
+}
 
-<h2>Calendar</h2>
-
-<table class="table">
-
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.dateModified)
-        </th>
-        <th></th>
-    </tr>
-
-</table>
+<div id="calendar"></div>
