@@ -1,7 +1,7 @@
-﻿{
+{
   "version": "1.0.0-*",
   "description": "meeting_keeper.Tests Class Library",
-  "authors": [ "filip" ],
+  "authors": [ "Filip, Milos, Aleksandar" ],
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",
@@ -20,9 +20,14 @@
   },
 
   "dependencies": {
+    "meeting_keeper": "1.0.0-*",
     "QUnit-MVC": "1.6.2",
     "xunit": "2.1.0-*",
-    "xunit.runner.dnx": "2.1.0-*"
+    "xunit.runner.dnx": "2.1.0-*",
+    "Microsoft.AspNet.TestHost": "1.0.0-rc1-final",
+    "EntityFramework.InMemory": "7.0.0-rc1-final",
+    "GenFu": "1.1.0",
+    "FluentAssertions": "4.0.1"
   },
   "commands": {
     "test": "xunit.runner.dnx"

@@ -29,7 +29,7 @@ namespace meeting_keeper.Controllers
                 return HttpNotFound();
             }
 
-            Client client = _context.Client.Single(m => m.id == id);
+            Client client = _context.Client.FirstOrDefault(m => m.id == id);
             if (client == null)
             {
                 return HttpNotFound();
