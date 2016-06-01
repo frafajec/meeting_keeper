@@ -4,7 +4,7 @@ using Microsoft.Data.Entity.Migrations;
 
 namespace meeting_keeper.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,26 +13,33 @@ namespace meeting_keeper.Migrations
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserLogin<string>_ApplicationUser_UserId", table: "AspNetUserLogins");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_IdentityRole_RoleId", table: "AspNetUserRoles");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_ApplicationUser_UserId", table: "AspNetUserRoles");
-            migrationBuilder.AlterColumn<string>(
-                name: "name",
-                table: "Client",
-                nullable: false);
-            migrationBuilder.AddColumn<string>(
-                name: "address",
-                table: "Client",
-                nullable: true);
             migrationBuilder.AddColumn<long>(
-                name: "earliestDate",
-                table: "Client",
+                name: "dateCreated",
+                table: "Calendar",
                 nullable: false,
                 defaultValue: 0L);
             migrationBuilder.AddColumn<string>(
-                name: "email",
-                table: "Client",
+                name: "name",
+                table: "Calendar",
                 nullable: true);
+            migrationBuilder.AddColumn<bool>(
+                name: "showSaturday",
+                table: "Calendar",
+                nullable: false,
+                defaultValue: false);
+            migrationBuilder.AddColumn<bool>(
+                name: "showSunday",
+                table: "Calendar",
+                nullable: false,
+                defaultValue: false);
             migrationBuilder.AddColumn<int>(
-                name: "numberOfContracts",
-                table: "Client",
+                name: "timeFrom",
+                table: "Calendar",
+                nullable: false,
+                defaultValue: 0);
+            migrationBuilder.AddColumn<int>(
+                name: "timeTo",
+                table: "Calendar",
                 nullable: false,
                 defaultValue: 0);
             migrationBuilder.AddForeignKey(
@@ -79,14 +86,12 @@ namespace meeting_keeper.Migrations
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserLogin<string>_ApplicationUser_UserId", table: "AspNetUserLogins");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_IdentityRole_RoleId", table: "AspNetUserRoles");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_ApplicationUser_UserId", table: "AspNetUserRoles");
-            migrationBuilder.DropColumn(name: "address", table: "Client");
-            migrationBuilder.DropColumn(name: "earliestDate", table: "Client");
-            migrationBuilder.DropColumn(name: "email", table: "Client");
-            migrationBuilder.DropColumn(name: "numberOfContracts", table: "Client");
-            migrationBuilder.AlterColumn<string>(
-                name: "name",
-                table: "Client",
-                nullable: true);
+            migrationBuilder.DropColumn(name: "dateCreated", table: "Calendar");
+            migrationBuilder.DropColumn(name: "name", table: "Calendar");
+            migrationBuilder.DropColumn(name: "showSaturday", table: "Calendar");
+            migrationBuilder.DropColumn(name: "showSunday", table: "Calendar");
+            migrationBuilder.DropColumn(name: "timeFrom", table: "Calendar");
+            migrationBuilder.DropColumn(name: "timeTo", table: "Calendar");
             migrationBuilder.AddForeignKey(
                 name: "FK_IdentityRoleClaim<string>_IdentityRole_RoleId",
                 table: "AspNetRoleClaims",

@@ -29,7 +29,7 @@ namespace meeting_keeper.Controllers
                 return HttpNotFound();
             }
 
-            Contract contract = _context.Contract.Single(m => m.id == id);
+            Contract contract = _context.Contract.FirstOrDefault(m => m.id == id);
             if (contract == null)
             {
                 return HttpNotFound();

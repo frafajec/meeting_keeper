@@ -6,9 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace meeting_keeper.Models
 {
-
-    //EACH user has ONLY ONE, 
-    public class Calendar
+    public class CalendarEntry
     {
 
         [ScaffoldColumn(false)]
@@ -19,10 +17,7 @@ namespace meeting_keeper.Models
         public long dateModified { get; set; }
         public string name { get; set; }
 
+        //TODO date and time
 
-        public bool showSaturday { get; set; }
-        public bool showSunday { get; set; }
-        public int timeFrom { get; set; }
-        public int timeTo { get; set; }
     }
 }

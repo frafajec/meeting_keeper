@@ -1,4 +1,6 @@
-﻿<div class="navbar navbar-inverse navbar-fixed-top">
+﻿@using System.Security.Claims
+
+<div class="navbar navbar-inverse navbar-fixed-top">
 
     <div class="container">
 
@@ -18,9 +20,11 @@
                 <li><a asp-controller="Home" asp-action="About">AboutPUB</a></li>
                 <li><a asp-controller="Home" asp-action="Contact">ContactPUB</a></li>
 
-                <li><a asp-controller="Client" asp-action="Index">Client</a></li>
-                <li><a asp-controller="Contract" asp-action="Index">Contract</a></li>
-                <li><a asp-controller="Calendar" asp-action="Index">Calendar</a></li>
+                @if (User.IsSignedIn()) {
+                    <li><a asp-controller="Client" asp-action="Index">Client</a></li>
+                    <li><a asp-controller="Contract" asp-action="Index">Contract</a></li>
+                    <li><a asp-controller="Calendar" asp-action="Index">Calendar</a></li>
+                }
 
             </ul>
             @await Html.PartialAsync("_LoginPartial")

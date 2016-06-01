@@ -18,7 +18,8 @@ namespace meeting_keeper.Controllers
         // GET: Calendar
         public IActionResult Index()
         {
-            return View(_context.Calendar.ToList());
+            //return View(_context.Calendar.ToList());
+            return View();
         }
 
         // GET: Calendar/Details/5

@@ -69,7 +69,19 @@ namespace meeting_keeper.Migrations
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<long>("dateCreated");
+
                     b.Property<long>("dateModified");
+
+                    b.Property<string>("name");
+
+                    b.Property<bool>("showSaturday");
+
+                    b.Property<bool>("showSunday");
+
+                    b.Property<int>("timeFrom");
+
+                    b.Property<int>("timeTo");
 
                     b.HasKey("id");
                 });
