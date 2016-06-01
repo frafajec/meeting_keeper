@@ -11,19 +11,23 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a asp-controller="Home" asp-action="Index" class="navbar-brand">Meeting keeper</a>
+            <a asp-controller="Home" asp-action="Index" class="navbar-brand">Business keeper</a>
         </div>
 
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a asp-controller="Home" asp-action="Index">HomePUB</a></li>
-                <li><a asp-controller="Home" asp-action="About">AboutPUB</a></li>
-                <li><a asp-controller="Home" asp-action="Contact">ContactPUB</a></li>
-
+                
                 @if (User.IsSignedIn()) {
                     <li><a asp-controller="Client" asp-action="Index">Client</a></li>
                     <li><a asp-controller="Contract" asp-action="Index">Contract</a></li>
                     <li><a asp-controller="Calendar" asp-action="Index">Calendar</a></li>
+                }
+                else
+                {
+                    <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-controller="Home" asp-action="About">About</a></li>
+                    <li><a asp-controller="Home" asp-action="Subscribe">Subscribe</a></li>
+                    <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
                 }
 
             </ul>

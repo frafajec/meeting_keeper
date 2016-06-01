@@ -27,6 +27,27 @@ namespace meeting_keeper.Controllers
             return View();
         }
 
+        public IActionResult Subscribe()
+        {
+            ViewData["Message"] = "Your subscription page.";
+
+            return View();
+        }
+
+        public IActionResult Cookie()
+        {
+            ViewData["Message"] = "Your cookie page.";
+
+            return View();
+        }
+
+        public IActionResult Terms()
+        {
+            ViewData["Message"] = "Your terms page.";
+
+            return View();
+        }
+
         public IActionResult Error()
         {
             return View();

@@ -20,6 +20,11 @@ textarea {
 /* Carousel */
 .carousel-caption {
     z-index: 10 !important;
+    background: linear-gradient(to top, rgba(0, 0, 0, .7) 0%, rgba(0, 0, 0, .0001) 100%);
+    border-top-left-radius: 1200px;
+    border-top-right-radius: 1200px;
+    bottom: 0px;
+    padding-top: 0;
 }
 
 .carousel-caption p {
@@ -32,6 +37,11 @@ textarea {
         z-index: 10 !important;
     }
 }
+@media screen and (min-width: 768px) {
+    .carousel-indicators {
+        bottom: 0px;
+    }
+}
 
 
 /******** CUSTOM CSS ********/
@@ -41,7 +51,7 @@ html {
   min-height: 100%;
 }
 body {
-  margin-bottom: 120px; /*Needs to be the same as footer height!*/
+  margin-bottom: 250px; /*Needs to be the same as footer height!*/
 }
 
 
@@ -54,11 +64,48 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 120px;
+  height: 250px;
   background-color: #f5f5f5;
 }
 #footer .row,
 #footer .row .col-md-4 {
     height: 100%;
 }
+#footer .vertical-navbar {
+    padding: 0;
+    max-height: none;
+    margin-bottom: 5px;
+}
+#footer .vertical-navbar .navbar ul {
+    float: none;
+    display: block;
+  }
+#footer .vertical-navbar .navbar li {
+    float: none;
+    display: block;
+  }
+#footer .vertical-navbar .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
 /**** FOOTER:end ****/
+
+
+
+/* HOME */
+#homePage {
+    margin-top: 10px;
+}
+#homePage .row .col-md-4 p {
+    padding-left: 5px;
+}
+#homePage .btn.btn-primary.btn-lg {
+    margin-top: 15px;
+}
+
+/* ABOUT */
+#aboutPage .img-center {
+	margin: 0 auto;
+}
+
+/* Contact */
