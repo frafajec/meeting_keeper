@@ -109,3 +109,42 @@ body {
 }
 
 /* Contact */
+
+
+/* Calendar */
+.sweet-alert {
+    width: 660px;
+    margin-left: -332px;
+    top: 40%;
+}
+.sweet-alert .sa-button-container {
+    margin-bottom: 25px;
+}
+#eventForm .input-group {
+    text-align: left;
+}
+#eventForm .input-group label {
+    margin-bottom: 0;
+}
+#eventForm .input-group input {
+    margin-top: 0;
+}
+#eventForm .input-group#eDay input {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+#eventForm .input-group#eDay label {
+    display: inline-block;
+}
+#eventForm div#eColor > * {
+    display: inline-block;
+}
+#eventForm div#eColor .dropdown {
+    margin-left: 10px;
+}
+#eventForm div#eColor .dropdown .btn-colorselector {
+    width: 60px;
+    height: 30px;
+}
