@@ -48,5 +48,7 @@ Temporary Items
 .idea/workspace.xml
 .idea/workspace.xml
 
-# Gulp dependencies
+# Gulp dependencies and libraries via bower
 node_modules
+packages
+src/meeting_keeper/wwwroot/lib

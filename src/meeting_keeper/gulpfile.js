@@ -1,11 +1,12 @@
-﻿/// <binding Clean='clean' />
+﻿/// <binding BeforeBuild='min:js' Clean='clean' />
 "use strict";
 
 var gulp = require("gulp"),
     rimraf = require("rimraf"),
     concat = require("gulp-concat"),
     cssmin = require("gulp-cssmin"),
-    uglify = require("gulp-uglify");
+    uglify = require("gulp-uglify"),
+    rename = require("gulp-rename");
 
 var paths = {
     webroot: "./wwwroot/"
@@ -29,6 +30,13 @@ gulp.task("clean:css", function (cb) {
 gulp.task("clean", ["clean:js", "clean:css"]);
 
 gulp.task("min:js", function () {
+    return gulp.src([paths.js, "!" + paths.minJs])
+        .pipe(uglify())
+        .pipe(rename(function (path) { path.extname = ".min.js"; }))
+        .pipe(gulp.dest(paths.webroot + 'js/'));
+});
+
+gulp.task("min-conc:js", function () {
     return gulp.src([paths.js, "!" + paths.minJs], { base: "." })
         .pipe(concat(paths.concatJsDest))
         .pipe(uglify())
