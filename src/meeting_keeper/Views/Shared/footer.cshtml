@@ -1,40 +1,51 @@
-﻿<footer id="footer" class="container">
+﻿<footer id="footer" class="footer-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h4>
+                    Project SW16
+                </h4>
+                <p style="font-weight: normal;">
+                    The course emphasises agile methods, in particular extreme programming, and their relation to informal techniques in requirements analysis, design, implementation and validation of software.
+                </p>
+            </div>
 
-    <div class="row">
-        <div class="col-md-4">
-            <h4>
-                Project SW16
-            </h4>
-            <p>
-                Text about Software Tech project and XP
-            </p>
-        </div>
+            <div class="col-md-4">
+                <h4>
+                    Subscriptions
+                </h4>
+                <p style="font-weight: normal;">
+                    Subscribe to one of our great services and improve your business today! 
+                </p>
+                <p><a class="btn btn-primary btn-sm" asp-controller="Home" asp-action="Subscribe" role="button">Subscriptions</a></p>
+            </div>
 
-        <div class="col-md-4">
-            <h4>
-                Subscription
-            </h4>
-            <p>
-                Text on how can one subscribe to our website and what we offer!
-            </p>
-            <p><a class="btn btn-primary btn-sm" asp-controller="Home" asp-action="Subscribe" role="button">Subscriptions</a></p>
-        </div>
+            <div class="col-md-4">
+                <h4>
+                    Quick links
+                </h4>
+                <div class="navbar vertical-navbar">
+                    <ul class="nav navbar">
+                        <li><a asp-controller="Home" asp-action="About">About Us</a></li>
+                        <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+                        <li><a asp-controller="Home" asp-action="Cookie">Cookie Policy</a></li>
+                        <li><a asp-controller="Home" asp-action="Terms">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
 
-        <div class="col-md-4">
-            <h4>
-                Our business
-            </h4>
-            <div class="navbar vertical-navbar">
-                <ul class="nav navbar">
-                    <li><a asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    <li><a asp-controller="Home" asp-action="Cookie">Cookie Policy</a></li>
-                    <li><a asp-controller="Home" asp-action="Terms">Terms &amp; Conditions</a></li>
-                </ul>
             </div>
 
         </div>
-
     </div>
 
 </footer>
+
+<div class="footer-below">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                Copyright © Business Keeper 2016
+            </div>
+        </div>
+    </div>
+</div>
