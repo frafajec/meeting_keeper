@@ -319,6 +319,25 @@ textarea {
     width: 60px;
     height: 30px;
 }
+<<<<<<< HEAD
+
+.btn-custom {
+    color: #ffffff;
+    background-color: #3db7a9;
+    border-color: #21859a;
+}
+
+
+#contact{
+    padding-bottom:50px;
+}
+
+#contact p{
+    font-size: 20px;
+    font-weight: normal;
+}
+
+=======
 .sweet-alert #eventForm #eDelete-input {
     width: 115px;
     height: 35px;
@@ -352,21 +371,5 @@ textarea {
 .sweet-alert #settings .input-group#sSaturday label,
 .sweet-alert #settings .input-group#sSunday label {
     display: inline-block;
-}}
-
-.btn-custom {
-    color: #ffffff;
-    background-color: #3db7a9;
-    border-color: #21859a;
 }
-
-
-#contact{
-    padding-bottom:50px;
-}
-
-#contact p{
-    font-size: 20px;
-    font-weight: normal;
-}
-
+>>>>>>> features

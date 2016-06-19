@@ -8,7 +8,7 @@ using meeting_keeper.Models;
 namespace meeting_keeper.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160601075254_initial")]
+    [Migration("20160618170904_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -80,9 +80,33 @@ namespace meeting_keeper.Migrations
 
                     b.Property<bool>("showSunday");
 
-                    b.Property<int>("timeFrom");
+                    b.Property<string>("userID");
 
-                    b.Property<int>("timeTo");
+                    b.HasKey("id");
+                });
+
+            modelBuilder.Entity("meeting_keeper.Models.CalendarEntry", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("allDay");
+
+                    b.Property<int>("calendarID");
+
+                    b.Property<string>("color");
+
+                    b.Property<long>("dateCreated");
+
+                    b.Property<long>("dateModified");
+
+                    b.Property<long>("end");
+
+                    b.Property<string>("name");
+
+                    b.Property<long>("start");
+
+                    b.Property<string>("title");
 
                     b.HasKey("id");
                 });
