@@ -167,14 +167,6 @@ p.copyright {
 
 
 
-
-
-
-body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
@@ -335,4 +327,35 @@ textarea {
     font-size: 20px;
     font-weight: normal;
 }
+
+/*Dashboard start*/
+.dashboardHolder {
+    background-color: rgb(35, 49, 64);
+}
+#side-menu {
+    background-color: rgb(35, 49, 64);
+}
+.sidebar ul li {
+    border-bottom: 1px dashed #e7e7e7;
+}
+#side-menu li a, .navbar-top-links li a {
+    color: #7af04e;
+}
+.dashboardBody {
+    background-color: rgb(44, 62, 80);
+}
+.navDashboardLogo {
+    background-color: rgb(44, 62, 80);
+    color:#FFF;
+    font-family: 'Pacifico', cursive;
+    font-size:44px;
+}
+.navDashboard {
+    background-color: rgb(44, 62, 80);
+    border-color:transparent;
+}
+.whiteColor {
+    color:#FFF !important;
+}
+/*Dashboard end*/
 
