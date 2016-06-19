@@ -362,6 +362,7 @@ textarea {
     font-weight: normal;
 }
 
+
 /*Dashboard start*/
 .dashboardHolder {
     background-color: rgb(35, 49, 64);
@@ -397,6 +398,7 @@ textarea {
 .tableHead {
     background-color:#EEE;
 }
+
 .noMargin {
     margin:0px;
 }
@@ -409,3 +411,13 @@ textarea {
   background-color: #FFF;
 }
 /*Dashboard end*/
+
+#subscribePage .hero-feature i{
+    font-size: 13em;
+    color: #2c3e50;
+    margin-top: 40px;
+}
+
+#subscribePage .hero-feature .btn{
+    margin-top:20px;
+}
