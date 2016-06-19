@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Data.Entity.Migrations;
+using Microsoft.Data.Entity.Metadata;
 
 namespace meeting_keeper.Migrations
 {
@@ -13,35 +14,87 @@ namespace meeting_keeper.Migrations
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserLogin<string>_ApplicationUser_UserId", table: "AspNetUserLogins");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_IdentityRole_RoleId", table: "AspNetUserRoles");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_ApplicationUser_UserId", table: "AspNetUserRoles");
-            migrationBuilder.AddColumn<long>(
-                name: "dateCreated",
-                table: "Calendar",
-                nullable: false,
-                defaultValue: 0L);
-            migrationBuilder.AddColumn<string>(
-                name: "name",
-                table: "Calendar",
-                nullable: true);
-            migrationBuilder.AddColumn<bool>(
-                name: "showSaturday",
-                table: "Calendar",
-                nullable: false,
-                defaultValue: false);
-            migrationBuilder.AddColumn<bool>(
-                name: "showSunday",
-                table: "Calendar",
-                nullable: false,
-                defaultValue: false);
-            migrationBuilder.AddColumn<int>(
-                name: "timeFrom",
-                table: "Calendar",
-                nullable: false,
-                defaultValue: 0);
-            migrationBuilder.AddColumn<int>(
-                name: "timeTo",
-                table: "Calendar",
-                nullable: false,
-                defaultValue: 0);
+            migrationBuilder.CreateTable(
+                name: "Calendar",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    dateCreated = table.Column<long>(nullable: false),
+                    dateModified = table.Column<long>(nullable: false),
+                    name = table.Column<string>(nullable: true),
+                    showSaturday = table.Column<bool>(nullable: false),
+                    showSunday = table.Column<bool>(nullable: false),
+                    userID = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Calendar", x => x.id);
+                });
+            migrationBuilder.CreateTable(
+                name: "CalendarEntry",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    allDay = table.Column<bool>(nullable: false),
+                    calendarID = table.Column<int>(nullable: false),
+                    color = table.Column<string>(nullable: true),
+                    dateCreated = table.Column<long>(nullable: false),
+                    dateModified = table.Column<long>(nullable: false),
+                    end = table.Column<long>(nullable: false),
+                    name = table.Column<string>(nullable: true),
+                    start = table.Column<long>(nullable: false),
+                    title = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CalendarEntry", x => x.id);
+                });
+            migrationBuilder.CreateTable(
+                name: "Client",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    address = table.Column<string>(nullable: true),
+                    dateCreated = table.Column<long>(nullable: false),
+                    dateModified = table.Column<long>(nullable: false),
+                    earliestDate = table.Column<long>(nullable: false),
+                    email = table.Column<string>(nullable: true),
+                    name = table.Column<string>(nullable: false),
+                    numberOfContracts = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Client", x => x.id);
+                });
+            migrationBuilder.CreateTable(
+                name: "Contract",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    dateCreated = table.Column<long>(nullable: false),
+                    dateModified = table.Column<long>(nullable: false),
+                    name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Contract", x => x.id);
+                });
+            migrationBuilder.AlterColumn<string>(
+                name: "UserId",
+                table: "AspNetUserLogins",
+                nullable: false);
+            migrationBuilder.AlterColumn<string>(
+                name: "UserId",
+                table: "AspNetUserClaims",
+                nullable: false);
+            migrationBuilder.AlterColumn<string>(
+                name: "RoleId",
+                table: "AspNetRoleClaims",
+                nullable: false);
             migrationBuilder.AddForeignKey(
                 name: "FK_IdentityRoleClaim<string>_IdentityRole_RoleId",
                 table: "AspNetRoleClaims",
@@ -86,12 +139,22 @@ namespace meeting_keeper.Migrations
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserLogin<string>_ApplicationUser_UserId", table: "AspNetUserLogins");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_IdentityRole_RoleId", table: "AspNetUserRoles");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_ApplicationUser_UserId", table: "AspNetUserRoles");
-            migrationBuilder.DropColumn(name: "dateCreated", table: "Calendar");
-            migrationBuilder.DropColumn(name: "name", table: "Calendar");
-            migrationBuilder.DropColumn(name: "showSaturday", table: "Calendar");
-            migrationBuilder.DropColumn(name: "showSunday", table: "Calendar");
-            migrationBuilder.DropColumn(name: "timeFrom", table: "Calendar");
-            migrationBuilder.DropColumn(name: "timeTo", table: "Calendar");
+            migrationBuilder.DropTable("Calendar");
+            migrationBuilder.DropTable("CalendarEntry");
+            migrationBuilder.DropTable("Client");
+            migrationBuilder.DropTable("Contract");
+            migrationBuilder.AlterColumn<string>(
+                name: "UserId",
+                table: "AspNetUserLogins",
+                nullable: true);
+            migrationBuilder.AlterColumn<string>(
+                name: "UserId",
+                table: "AspNetUserClaims",
+                nullable: true);
+            migrationBuilder.AlterColumn<string>(
+                name: "RoleId",
+                table: "AspNetRoleClaims",
+                nullable: true);
             migrationBuilder.AddForeignKey(
                 name: "FK_IdentityRoleClaim<string>_IdentityRole_RoleId",
                 table: "AspNetRoleClaims",

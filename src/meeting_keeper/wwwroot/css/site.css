@@ -115,36 +115,70 @@ body {
 .sweet-alert {
     width: 660px;
     margin-left: -332px;
-    top: 40%;
+    /*top: 40%;*/
 }
 .sweet-alert .sa-button-container {
     margin-bottom: 25px;
 }
-#eventForm .input-group {
+.sweet-alert #eventForm .input-group {
     text-align: left;
 }
-#eventForm .input-group label {
+.sweet-alert #eventForm .input-group label {
     margin-bottom: 0;
 }
-#eventForm .input-group input {
+.sweet-alert #eventForm .input-group input {
     margin-top: 0;
 }
-#eventForm .input-group#eDay input {
+.sweet-alert #eventForm .input-group#eDay input {
     display: inline-block;
     width: 20px;
     height: 20px;
     margin-right: 10px;
 }
-#eventForm .input-group#eDay label {
+.sweet-alert #eventForm .input-group#eDay label {
     display: inline-block;
 }
-#eventForm div#eColor > * {
+.sweet-alert #eventForm div#eColor > * {
     display: inline-block;
 }
-#eventForm div#eColor .dropdown {
+.sweet-alert #eventForm div#eColor .dropdown {
     margin-left: 10px;
 }
-#eventForm div#eColor .dropdown .btn-colorselector {
+.sweet-alert #eventForm div#eColor .dropdown .btn-colorselector {
     width: 60px;
     height: 30px;
+}
+.sweet-alert #eventForm #eDelete-input {
+    width: 115px;
+    height: 35px;
+    float: left;
+    background-color: #9c0000;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    box-shadow: none;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 10px 32px;
+    margin: 26px 5px 0 5px;
+    cursor: pointer;
+    line-height: 1;
+}
+.sweet-alert #eventForm #eDelete-input:hover {
+
+}
+.sweet-alert #eventForm #eDelete-input:active {
+
+}
+
+.sweet-alert #settings .input-group#sSaturday input,
+.sweet-alert #settings .input-group#sSunday input {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 0 10px 0 0;
+}
+.sweet-alert #settings .input-group#sSaturday label,
+.sweet-alert #settings .input-group#sSunday label {
+    display: inline-block;
 }
