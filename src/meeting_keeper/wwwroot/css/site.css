@@ -336,3 +336,12 @@ textarea {
     font-weight: normal;
 }
 
+#subscribePage .hero-feature i{
+    font-size: 13em;
+    color: #2c3e50;
+    margin-top: 40px;
+}
+
+#subscribePage .hero-feature .btn{
+    margin-top:20px;
+}
