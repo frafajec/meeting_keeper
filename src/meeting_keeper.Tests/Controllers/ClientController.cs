@@ -18,6 +18,7 @@ namespace meeting_keeper.Tests.Controllers
 
         private readonly IServiceProvider _serviceProvider;
         private meeting_keeper.Controllers.ClientController _clientController;
+        private ApplicationDbContext _dbContext;
         public ClientController()
         {
             var services = new ServiceCollection();
@@ -28,9 +29,9 @@ namespace meeting_keeper.Tests.Controllers
 
             _serviceProvider = services.BuildServiceProvider();
 
-            var dbContext = _serviceProvider.GetRequiredService<ApplicationDbContext>();
-            CreateTestData(dbContext);
-            _clientController = new meeting_keeper.Controllers.ClientController(dbContext);
+            _dbContext = _serviceProvider.GetRequiredService<ApplicationDbContext>();
+            CreateTestData(_dbContext);
+            _clientController = new meeting_keeper.Controllers.ClientController(_dbContext);
         }
 
         private void CreateTestData(ApplicationDbContext dbContext)
@@ -87,12 +88,13 @@ namespace meeting_keeper.Tests.Controllers
         public void DetailsCorrectIdGiven()
         {
             // Act
-            var actionResult = _clientController.Details(1);
+            var clientID = _dbContext.Client.First().id;
+            var actionResult = _clientController.Details(clientID);
 
             // Assert
             actionResult.Should().BeOfType<ViewResult>()
                                  .Which.ViewData.Model.Should().BeOfType<Client>()
-                                 .Which.id.Should().Be(1);
+                                 .Which.id.Should().Be(clientID);
         }
 
     }

@@ -50,6 +50,11 @@ namespace meeting_keeper.Controllers
         public CalendarEntry createEvent(CalendarEntry entry)
         {
 
+            List<CalendarEntry> entries = _context.CalendarEntry.ToList();
+            if (entries.Any(c => c.id == entry.id)) {
+                return null;
+            }
+
             _context.CalendarEntry.Add(entry);
             _context.SaveChanges();
 

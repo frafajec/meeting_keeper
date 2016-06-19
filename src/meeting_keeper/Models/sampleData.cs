@@ -13,49 +13,82 @@ namespace meeting_keeper.Models
 
         public static void Initialize(IServiceProvider serviceProvider)
         {
-            var context = serviceProvider.GetService<ApplicationDbContext>();
+            var _dbContext = serviceProvider.GetRequiredService<ApplicationDbContext>();
 
-            context.Database.Migrate();
-            if (!context.Client.Any())
+            if (!_dbContext.Client.Any())
             {
-
-                context.Client.Add(
+                _dbContext.Client.AddRange(
                     new Client()
                     {
-                        id = 1,
-                        dateCreated = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond,
-                        dateModified = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond,
-                        name = "Client 1"
+                        dateCreated = 0,
+                        dateModified = 0,
+                        name = "Joe Budder",
+                        numberOfContracts = 2,
+                        address = "First street, New York",
+                        email = "joe.budder@gmail.com",
+                        earliestDate = 12
+                    },
+                    new Client()
+                    {
+                        dateCreated = 0,
+                        dateModified = 0,
+                        name = "Franz Meihn",
+                        numberOfContracts = 13,
+                        address = "Beerstraße, Munich",
+                        email = "franz.meihn@gmail.com",
+                        earliestDate = 0
+                    },
+                    new Client()
+                    {
+                        dateCreated = 0,
+                        dateModified = 0,
+                        name = "Ivan Ivanovich",
+                        numberOfContracts = 0,
+                        address = "Staljinov trg, Moscow",
+                        email = "ivan.the.russian@gmail.com",
+                        earliestDate = 0
+                    },
+                    new Client()
+                    {
+                        dateCreated = 0,
+                        dateModified = 0,
+                        name = "Philiph Track",
+                        numberOfContracts = 3,
+                        address = "Queens alley, London",
+                        email = "philiph.track@gmail.com",
+                        earliestDate = 0
                     }
                 );
 
-                //context.Client.AddRange(
-                    
-                //    new Client()
-                //    {
-                //        id = 2,
-                //        //dateCreated = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond,
-                //        //dateModified = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond,
-                //        name = "Cient 2"
-                //    },
-                //    new Client()
-                //    {
-                //        id = 3,
-                //        //dateCreated = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond,
-                //        //dateModified = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond,
-                //        name = "BLABLA"
-                //    },
-                //    new Client()
-                //    {
-                //        id = 4,
-                //        //dateCreated = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond,
-                //        //dateModified = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond,
-                //        name = "Last client"
-                //    }
-                //);
-
-                context.SaveChanges();
+                _dbContext.SaveChanges();
             }
+
+            if (!_dbContext.Contract.Any())
+            {
+                _dbContext.Contract.AddRange(
+                    new Contract()
+                    {
+                        dateCreated = 0,
+                        dateModified = 0,
+                        name = "Joe Budder's private"
+                    },
+                    new Contract()
+                    {
+                        dateCreated = 0,
+                        dateModified = 0,
+                        name = "Franz Meihn's private"
+                    },
+                    new Contract()
+                    {
+                        dateCreated = 0,
+                        dateModified = 0,
+                        name = "Ivan Ivanovich proposal"
+                    }
+                );
+
+                _dbContext.SaveChanges();
+            }
+
         }
 
     }

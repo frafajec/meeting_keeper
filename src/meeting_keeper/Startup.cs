@@ -100,7 +100,7 @@ namespace meeting_keeper
             });
 
             //Added for init data purposes::DEVELOPMENT
-            //sampleData.Initialize(app.ApplicationServices);
+            sampleData.Initialize(app.ApplicationServices);
         }
 
         // Entry point for the application.
