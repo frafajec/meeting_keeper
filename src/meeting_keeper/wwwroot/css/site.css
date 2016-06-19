@@ -344,7 +344,7 @@ textarea {
 .sweet-alert #settings .input-group#sSaturday label,
 .sweet-alert #settings .input-group#sSunday label {
     display: inline-block;
-}}
+}
 
 .btn-custom {
     color: #ffffff;
@@ -372,8 +372,11 @@ textarea {
 .sidebar ul li {
     border-bottom: 1px dashed #e7e7e7;
 }
-#side-menu li a, .navbar-top-links li a {
+#side-menu li a, .navbar-top-links li a i, .navbar-top-links li button i {
     color: #7af04e;
+}
+.navbar-top-links li button {
+    padding:3px 20px;
 }
 .dashboardBody {
     background-color: rgb(44, 62, 80);
@@ -391,5 +394,18 @@ textarea {
 .whiteColor {
     color:#FFF !important;
 }
+.tableHead {
+    background-color:#EEE;
+}
+.noMargin {
+    margin:0px;
+}
+#side-menu li a:hover {
+  text-decoration: none;
+  background-color: #FFF;
+}
+.navbar-top-links li a:hover {
+  text-decoration: none;
+  background-color: #FFF;
+}
 /*Dashboard end*/
-

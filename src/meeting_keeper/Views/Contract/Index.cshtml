@@ -15,33 +15,35 @@
     </div>
     <!-- /.row -->
     <p>
-        <a asp-action="Create">Create New</a>
+        <a class="btn btn-success" asp-action="Create">Create New</a>
     </p>
     <table class="table">
-        <tr>
+        <tr class="tableHead">
             <th>
-                @Html.DisplayNameFor(model => model.dateCreated)
+                Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.dateModified)
+                Created date
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.name)
+                Modified date
             </th>
-            <th></th>
+            <th>
+                Actions
+            </th>
         </tr>
 
         @foreach (var item in Model)
         {
             <tr>
                 <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.dateCreated)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.dateModified)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.name)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |

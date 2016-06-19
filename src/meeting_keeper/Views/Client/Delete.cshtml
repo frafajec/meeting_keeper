@@ -20,40 +20,50 @@
         <hr />
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.address)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.address)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.earliestDate)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.earliestDate)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.email)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.email)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.name)
+                Name: 
             </dt>
             <dd>
                 @Html.DisplayFor(model => model.name)
+                <br />
+                <br />
             </dd>
             <dt>
-                @Html.DisplayNameFor(model => model.numberOfContracts)
+                Address:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.address)
+                <br />
+                <br />
+            </dd>
+            <dt>
+                Email:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.email)
+                <br />
+                <br />
+            </dd>
+            <dt>
+                Earliest date:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.earliestDate)
+                <br />
+                <br />
+            </dd>
+            <dt>
+                Number of contracts:
             </dt>
             <dd>
                 @Html.DisplayFor(model => model.numberOfContracts)
+                <br />
+                <br />
             </dd>
         </dl>
 
         <form asp-action="Delete">
             <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
+                <input type="submit" value="Delete" class="btn btn-danger" /> |
                 <a asp-action="Index">Back to List</a>
             </div>
         </form>

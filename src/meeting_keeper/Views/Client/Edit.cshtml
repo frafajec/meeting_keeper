@@ -20,35 +20,35 @@
             <hr />
             <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="address" class="col-md-2 control-label"></label>
-                <div class="col-md-10">
-                    <input asp-for="address" class="form-control" />
-                    <span asp-validation-for="address" class="text-danger" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="earliestDate" class="col-md-2 control-label"></label>
-                <div class="col-md-10">
-                    <input asp-for="earliestDate" class="form-control" />
-                    <span asp-validation-for="earliestDate" class="text-danger" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="email" class="col-md-2 control-label"></label>
-                <div class="col-md-10">
-                    <input asp-for="email" class="form-control" />
-                    <span asp-validation-for="email" class="text-danger" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="name" class="col-md-2 control-label"></label>
+                <label asp-for="name" class="col-md-2 control-label">Name</label>
                 <div class="col-md-10">
                     <input asp-for="name" class="form-control" />
                     <span asp-validation-for="name" class="text-danger" />
                 </div>
             </div>
             <div class="form-group">
-                <label asp-for="numberOfContracts" class="col-md-2 control-label"></label>
+                <label asp-for="address" class="col-md-2 control-label">Address</label>
+                <div class="col-md-10">
+                    <input asp-for="address" class="form-control" />
+                    <span asp-validation-for="address" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="email" class="col-md-2 control-label">Email</label>
+                <div class="col-md-10">
+                    <input asp-for="email" class="form-control" />
+                    <span asp-validation-for="email" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="earliestDate" class="col-md-2 control-label">Earliest date</label>
+                <div class="col-md-10">
+                    <input asp-for="earliestDate" class="form-control" />
+                    <span asp-validation-for="earliestDate" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="numberOfContracts" class="col-md-2 control-label">Number of contracts</label>
                 <div class="col-md-10">
                     <input asp-for="numberOfContracts" class="form-control" />
                     <span asp-validation-for="numberOfContracts" class="text-danger" />
@@ -56,7 +56,7 @@
             </div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
+                    <input type="submit" value="Save" class="btn btn-success" />
                 </div>
             </div>
         </div>
