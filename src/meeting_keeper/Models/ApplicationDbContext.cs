@@ -20,5 +20,7 @@ namespace meeting_keeper.Models
         public DbSet<Client> Client { get; set; }
         public DbSet<Contract> Contract { get; set; }
         public DbSet<Calendar> Calendar { get; set; }
+        public DbSet<CalendarEntry> CalendarEntry { get; set; }
+	public DbSet<Dashboard> Dashboard { get; set; }
     }
 }

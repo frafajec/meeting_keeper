@@ -18,6 +18,7 @@
             <ul class="nav navbar-nav navbar-right">
                 @if (User.IsSignedIn())
                 {
+                    <li><a asp-controller="Dashboards" asp-action="Index">Dashboard</a></li>
                     <li><a asp-controller="Client" asp-action="Index">Client</a></li>
                     <li><a asp-controller="Contract" asp-action="Index">Contract</a></li>
                     <li><a asp-controller="Calendar" asp-action="Index">Calendar</a></li>

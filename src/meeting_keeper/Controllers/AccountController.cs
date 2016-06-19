@@ -458,7 +458,8 @@ namespace meeting_keeper.Controllers
             }
             else
             {
-                return RedirectToAction(nameof(HomeController.Index), "Home");
+                //return RedirectToAction(nameof(DashboardsController.Index), "DashboardsController");
+                return Redirect("/Dashboards");
             }
         }
 

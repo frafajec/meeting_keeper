@@ -12,12 +12,11 @@ using FluentAssertions;
 
 namespace meeting_keeper.Tests.Controllers
 {
-    public class CalendarController
+    public class CalendarEntriesController
     {
-
         private readonly IServiceProvider _serviceProvider;
-        private meeting_keeper.Controllers.CalendarController _calendarController;
-        public CalendarController()
+        private meeting_keeper.Controllers.CalendarEntriesController _calendarEntriesController;
+        public CalendarEntriesController()
         {
             var services = new ServiceCollection();
 
@@ -28,39 +27,8 @@ namespace meeting_keeper.Tests.Controllers
             _serviceProvider = services.BuildServiceProvider();
 
             var dbContext = _serviceProvider.GetRequiredService<ApplicationDbContext>();
-            _calendarController = new meeting_keeper.Controllers.CalendarController(dbContext);
+            _calendarEntriesController = new meeting_keeper.Controllers.CalendarEntriesController(dbContext);
         }
-
-
-        [Fact]
-        public void RedirectsView()
-        {
-
-            // Act
-            var result = (ViewResult)_calendarController.Index();
-
-            // Assert
-            //Assert.NotNull(result);
-
-            Assert.Equal("Index", result.ViewName);
-            
-            //Assert.NotNull(result);
-
-
-        }
-
-        [Fact]
-        public void ReturnsView()
-        {
-            // Act
-            var result = _calendarController.Index();
-
-            // Assert
-            Assert.NotNull(result);
-        }
-
-        
 
     }
-
 }

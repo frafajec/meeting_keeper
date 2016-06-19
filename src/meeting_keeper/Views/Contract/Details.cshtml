@@ -1,36 +1,45 @@
 @model meeting_keeper.Models.Contract
-
+@{
+    Layout = "_LayoutDashboard";
+}
 @{
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Contract</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.dateCreated)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.dateCreated)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.dateModified)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.dateModified)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.name)
-        </dd>
-    </dl>
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Details</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div>
+        <h4>Contract</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.dateCreated)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.dateCreated)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.dateModified)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.dateModified)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.name)
+            </dd>
+        </dl>
+    </div>
+    <p>
+        <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </p>
 </div>
-<p>
-    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</p>
