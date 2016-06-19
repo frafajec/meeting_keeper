@@ -1,11 +1,8 @@
-﻿/*
- * Calendar file
-*/
-
-function eventHTML() {
+﻿function eventHTML() {
     var html = "";
 
     html += '<div id="eventForm">';
+    html += '   <input type="text" class="form-control" id="eID-input" style="display: none;" />';
 
     html += '<div class="col-md-6"> <div class="form-group">';
     html += '   <div class="input-group date" id="eStart">';
@@ -60,6 +57,10 @@ function eventHTML() {
     html += '   </div>';
     html += '</div>';
 
+    html += '<div class="col-md-12">';
+    html += '   <input type="button" id="eDelete-input" />';
+    html += '</div>';
+
     html += '</div>';
 
     return html;
@@ -94,22 +95,33 @@ function addEvent(start, end) {
 
     }, function (isConfirm) {
 
-        if (isConfirm) {
+        if (isConfirm !== false) {
 
             var form = $(".sweet-alert #eventForm");
 
             var eventData = {
                 title: form.find("#eTitle-input").val(),
-                start: form.find("#eStart-input").val() ? reformatTime(form.find("#eStart-input").val()) : "",
-                end: form.find("#eEnd-input").val() ? reformatTime(form.find("#eEnd-input").val()) : "",
+                start: form.find("#eStart-input").val() ? new Date(reformatTime(form.find("#eStart-input").val())).getTime() : 0,
+                end: form.find("#eEnd-input").val() ? new Date(reformatTime(form.find("#eEnd-input").val())).getTime() : 0,
                 allDay: $("#eDay-input").prop('checked'),
                 color: form.find("#eColor-input option[value=" + form.find("#eColor-input").val() + "]").data("color")
             };
 
-            $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-        }
-        else {
-            swal("Cancelled", "Your imaginary file is safe :)", "error");
+            $.ajax({
+                url: "Calendar/createEvent",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                type: "GET",
+                cache: false,
+                data: { eventJson: JSON.stringify(eventData) }
+            }).done(function (eventData) {
+
+                eventData.start = new Date(eventData.start).toISOString();
+                eventData.end = new Date(eventData.end).toISOString();
+
+                $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+
+            });
         }
 
     });
@@ -118,6 +130,7 @@ function addEvent(start, end) {
 
     //initialize datetime picker on swal and colorpicker
     $(".sweet-alert").find("fieldset").hide();
+    $(".sweet-alert").find("#eDelete-input").hide();
     $('#eStart').datetimepicker({ format: "DD.MM.YYYY HH:mm", minDate: new Date() });
     $('#eEnd').datetimepicker({ format: "DD.MM.YYYY HH:mm",  useCurrent: false });
     $("#eStart").on("dp.change", function (e) { $('#eEnd').data("DateTimePicker").minDate(e.date); });
@@ -139,30 +152,38 @@ function editEvent(event, element) {
         html: true,
         type: "input"
 
-    }, function (isConfirm) {
+    }, function (isConfirm, e, a) {
 
-        if (isConfirm) {
+        if (isConfirm !== false) {
 
             var form = $(".sweet-alert #eventForm");
 
             var eventData = {
+                id: parseInt(form.find("#eID-input").val()),
                 title: form.find("#eTitle-input").val(),
-                start: form.find("#eStart-input").val() ? reformatTime(form.find("#eStart-input").val()) : "",
-                end: form.find("#eEnd-input").val() ? reformatTime(form.find("#eEnd-input").val()) : "",
+                start: form.find("#eStart-input").val() ? new Date(reformatTime(form.find("#eStart-input").val())).getTime() : 0,
+                end: form.find("#eEnd-input").val() ? new Date(reformatTime(form.find("#eEnd-input").val())).getTime() : 0,
                 allDay: $("#eDay-input").prop('checked'),
                 color: form.find("#eColor-input option[value=" + form.find("#eColor-input").val() + "]").data("color")
             };
 
+            $.ajax({
+                url: "Calendar/editEvent",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                type: "GET",
+                cache: false,
+                data: { eventJson: JSON.stringify(eventData) }
+            });
+
             event.title = eventData.title;
-            event.start = eventData.start;
-            event.end = eventData.end;
+            event.start = new Date(eventData.start).toISOString();
+            event.end = new Date(eventData.end).toISOString();
             event.allDay = eventData.allDay;
             event.color = eventData.color;
 
             $('#calendar').fullCalendar('updateEvent', event);
-        }
-        else {
-            swal("Cancelled", "Your imaginary file is safe :)", "error");
+
         }
 
     });
@@ -178,38 +199,189 @@ function editEvent(event, element) {
     $('#eColor-input').colorselector();
 
     //set event values
+    $("#eID-input").val(event.id);
     $('#eColor-input').colorselector('setColor', event.color);
     $('#eStart-input').val(formatTime(event.start._d));
     $('#eEnd-input').val( event.end ? formatTime(event.end._d) : "");
     $("#eTitle-input").val(event.title);
     $("#eDay-input").prop('checked', event.allDay);
 
+    $(".sweet-alert").find("#eDelete-input").val("Delete").click(removeEvent);
+
+}
+
+function removeEvent() {
+
+    var form = $(".sweet-alert #eventForm");
+
+    var eventData = {
+        id: parseInt(form.find("#eID-input").val()),
+        title: form.find("#eTitle-input").val(),
+        start: form.find("#eStart-input").val() ? new Date(reformatTime(form.find("#eStart-input").val())).getTime() : 0,
+        end: form.find("#eEnd-input").val() ? new Date(reformatTime(form.find("#eEnd-input").val())).getTime() : 0,
+        allDay: $("#eDay-input").prop('checked'),
+        color: form.find("#eColor-input option[value=" + form.find("#eColor-input").val() + "]").data("color")
+    };
+
+    $.ajax({
+        url: "Calendar/removeEvent",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        type: "GET",
+        cache: false,
+        data: { eventJson: JSON.stringify(eventData) }
+    }).done( function (eventID) {
+
+        $('#calendar').fullCalendar('removeEvents', [eventID]);
+        $('.sweet-alert button.cancel').click();
+
+    });
+
+}
+
+function settings() {
+    
+    $.ajax({
+        url: "Calendar/getSettings",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        type: "GET",
+        cache: false,
+        data: {}
+    }).done(function (settings) {
+
+        var html = '<div id="settings">';
+
+        html += '<input type="text" id="hiddenBug" style="display: none;">';
+
+        html += '<div class="col-md-12">';
+        html += '   <div class="form-group">';
+        html += '       <div class="input-group" id="sSaturday">';
+        html += '           <label for="sSaturday-input" class="control-label"> Show Saturday <input type="checkbox" class="form-control" id="sSaturday-input" /> </label>';
+        html += '       </div>';
+        html += '   </div>';
+        html += '</div>';
+        html += '<div class="col-md-12">';
+        html += '   <div class="form-group">';
+        html += '       <div class="input-group" id="sSunday">';
+        html += '           <label for="sSunday-input" class="control-label"> Show Sunday <input type="checkbox" class="form-control" id="sSunday-input" /> </label>';
+        html += '       </div>';
+        html += '   </div>';
+        html += '</div>';
+
+        html += '</div>';
+
+        swal({
+            title: "Calendar settings",
+            confrmButtonText: "Save",
+            cancelButtonText: "Cancel",
+            text: html,
+            showCancelButton: true,
+            html: true,
+            type: "input"
+        }, function (isConfirm) {
+
+            if (isConfirm !== false) {
+                var settings = {
+                    showSaturday: $(".sweet-alert").find("#sSaturday-input").prop("checked"),
+                    showSunday: $(".sweet-alert").find("#sSunday-input").prop("checked")
+                };
+
+                $.ajax({
+                    url: "Calendar/saveSettings",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    type: "GET",
+                    cache: false,
+                    data: { settingsJSON: JSON.stringify(settings) }
+                }).done(function (data) {
+
+                    console.log(data);
+                    //TODO update calendar, possible?
+
+                });
+            }
+
+        });
+
+        $('#calendar').fullCalendar('unselect');
+
+        //initialize js
+        $(".sweet-alert").find("fieldset").hide();
+
+        //settings hidden days
+        if (settings.hiddenDays.indexOf(0) === -1) { $(".sweet-alert").find("#sSunday-input").prop("checked", true); }
+        if (settings.hiddenDays.indexOf(6) === -1) { $(".sweet-alert").find("#sSaturday-input").prop("checked", true); }
+
+    });
+
 }
 
 $(document).ready(function () {
 
-    $('#calendar').fullCalendar({
-        //TODO: get user preferences!
+    $.ajax({
+        url: "Calendar/initCalendar",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        type: "GET",
+        cache: false,
+        data: {}
+    }).done(function (data) {
 
-        timeFormat: "HH:mm",
-        firstDay: 1,
-        hiddenDays: [], //6, 0 are saturday and sunday
-
-        editable: true,
-        eventLimit: true,
-        selectable: true,
-        selectHelper: true,
-
-        select: addEvent,
-        eventClick: editEvent,
-
-        header: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'month,agendaWeek,agendaDay'
+        for (var i = 0; i < data.events.length; i++) {
+            data.events[i].start = new Date(data.events[i].start).toISOString();
+            data.events[i].end = new Date(data.events[i].end).toISOString();
         }
+
+        $('#calendar').fullCalendar({
+
+            timeFormat: "HH:mm",
+            firstDay: data.settings.firstDay,
+            hiddenDays: data.settings.hiddenDays, //6, 0 are saturday and sunday
+
+            editable: true,
+            eventLimit: true,
+            selectable: true,
+            selectHelper: true,
+
+            select: addEvent,
+            eventClick: editEvent,
+
+            customButtons: {
+                settings: {
+                    text: 'Settings',
+                    //icon: ' fa fa-cog',
+                    click: settings
+                },
+            },
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay settings'
+            },
+
+            events: data.events
+
+        });
+
+
     });
 
+
     
+
+
+    //$.ajax({
+    //    url: $("#calendarController").data("request-url"),
+    //    contentType: "application/json; charset=utf-8",
+    //    dataType: "json",
+    //    type: "GET",
+    //    cache: false,
+    //    data: { data: "123" }
+    //}).done(function (data) {
+    //    console.log(data);
+    //});
+
+
 
 });
