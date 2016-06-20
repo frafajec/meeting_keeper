@@ -30,6 +30,8 @@ It has powerful calendar UI where you will spend your time arranging your meetin
 [bootstrap-datetimepicker 4.17](https://eonasdan.github.io/bootstrap-datetimepicker/ "Datetimepicker git") - Mighty UI calendar and time selector.
 
 [bootstrap-colorselector 1](http://bootstrap-colorselector.flaute.com/ "Colorselector Homepage") - Simple "select" that allows for nice color picking.
+
+[startbootstrap-sb-admin-2](http://startbootstrap.com/template-overviews/sb-admin-2/ "Dashboard homepage") - Plugin for dashboard
  
 ###Test libraries
 [xUnit 2.1.0](http://xunit.github.io/docs/getting-started-dnx.html "xUnit getting started") - Framework for testing ASP.NET applications through MVC
@@ -43,15 +45,31 @@ It has powerful calendar UI where you will spend your time arranging your meetin
  
 ## Usage
 
-In order to use application in development enviroment one needs to have VS2015 COmmunity Edition with installed ASP.NET 5 (Core 1.0) and EntityFramework 7, which are both in pre-release phase.
+In order to use application in development enviroment one needs to have VS2015 Community Edition with installed ASP.NET 5 (Core 1.0) and EntityFramework 7, which are both in pre-release phase.
 Tests are run from Visual Studio test window by first building the solution then executing tests.
+
+1. Install Visual Studio 2015 Community Edition version 14.0.25123 Update 2/
+
+2. .NET framework should be pulled automatically to version 4.6
+
+3. Throught NuGet package install Microsoft ASP.NET and Web Tools version 14.1.20203
+
+4. Throught NuGet package install Microsoft ASP.NET and Web Framework and Tools version 5.2.4
+
+5. Install npm and bower to newest version
+
+6. Pull project from git and unpack it
+
+7. Simply load solution into VS and project should be opened
+
+*WARNING* Since all frameworks and tools are still in pre-release (beta) phases, problems may (will) occur!
 
 
 ## History
 
 0.1 - Pre-release (staging) of application
 
-1.0 - _In development_
+1.0 - Full system functionallity for simple business keeping
 
 
 ## Credits
@@ -72,3 +90,12 @@ This project is part of TUGraz course "Software Technology". [Reference](http://
 ## License
 
 No licence. Take, improve, become rich.
+
+
+## References
+
+[Macbook mockup](https://www.mockupworld.co/free/nightly-office-scene-with-macbook-mockup/ "")
+
+[Business icons collection](http://www.freepik.com/free-vector/business-icons-collection_798088.htm "")
+
+[Business team icons](http://www.freepik.com/free-vector/business-team-with-an-idea_832225.htm "")
