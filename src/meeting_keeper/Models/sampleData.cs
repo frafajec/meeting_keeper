@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Data.Entity;
 
 namespace meeting_keeper.Models
 {
@@ -13,7 +9,7 @@ namespace meeting_keeper.Models
 
         public static void Initialize(IServiceProvider serviceProvider)
         {
-            var _dbContext = serviceProvider.GetRequiredService<ApplicationDbContext>();
+            var _dbContext = serviceProvider.GetRequiredService<ApplicationDbContext>();          
 
             if (!_dbContext.Client.Any())
             {

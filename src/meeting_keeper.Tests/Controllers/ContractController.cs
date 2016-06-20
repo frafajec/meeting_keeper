@@ -17,6 +17,8 @@ namespace meeting_keeper.Tests.Controllers
 
         private readonly IServiceProvider _serviceProvider;
         private meeting_keeper.Controllers.ContractController _contractController;
+        private ApplicationDbContext _dbContext;
+
         public ContractController()
         {
             var services = new ServiceCollection();
@@ -27,9 +29,9 @@ namespace meeting_keeper.Tests.Controllers
 
             _serviceProvider = services.BuildServiceProvider();
 
-            var dbContext = _serviceProvider.GetRequiredService<ApplicationDbContext>();
-            CreateTestData(dbContext);
-            _contractController = new meeting_keeper.Controllers.ContractController(dbContext);
+            _dbContext = _serviceProvider.GetRequiredService<ApplicationDbContext>();
+            CreateTestData(_dbContext);
+            _contractController = new meeting_keeper.Controllers.ContractController(_dbContext);
         }
 
         private void CreateTestData(ApplicationDbContext dbContext)
@@ -86,12 +88,13 @@ namespace meeting_keeper.Tests.Controllers
         public void DetailsCorrectIdGiven()
         {
             // Act
-            var actionResult = _contractController.Details(1);
+            var contractID = _dbContext.Contract.First().id;
+            var actionResult = _contractController.Details(contractID);
 
             // Assert
             actionResult.Should().BeOfType<ViewResult>()
                                  .Which.ViewData.Model.Should().BeOfType<Contract>()
-                                 .Which.id.Should().Be(1);
+                                 .Which.id.Should().Be(contractID);
         }
 
     }

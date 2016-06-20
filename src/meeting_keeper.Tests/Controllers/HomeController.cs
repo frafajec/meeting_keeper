@@ -19,8 +19,21 @@ namespace meeting_keeper.Tests.Controllers
 
 
 
+        //[Fact]
+        //public void ReturnsView()
+        //{
+        //    // Act
+        //    var result = _homeController.Index();
+
+        //    // Assert
+        //    Assert.NotNull(result);
+        //}
+
+        // NOT working while direct view that is returned is determined in core, not in method call itself!
+
+
         [Fact]
-        public void ReturnsView()
+        public void ReturnsIndex()
         {
             // Act
             var result = _homeController.Index();
@@ -29,16 +42,55 @@ namespace meeting_keeper.Tests.Controllers
             Assert.NotNull(result);
         }
 
-        // NOT working while direct view that is returned is determined in core, not in method call itself!
-        //[Fact]
-        //public void ReturnsIndex()
-        //{
-        //    // Act
-        //    var result = _homeController.Index() as ViewResult;
+        [Fact]
+        public void ReturnsAbout()
+        {
+            // Act
+            var result = _homeController.About();
 
-        //    // Assert
-        //    Assert.Equal("Index", result.ViewName);
-        //}
+            // Assert
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void ReturnsContact()
+        {
+            // Act
+            var result = _homeController.Contact();
+
+            // Assert
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void ReturnsCookie()
+        {
+            // Act
+            var result = _homeController.Cookie();
+
+            // Assert
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void ReturnsSubscribe()
+        {
+            // Act
+            var result = _homeController.Subscribe();
+
+            // Assert
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void ReturnsTerms()
+        {
+            // Act
+            var result = _homeController.Terms();
+
+            // Assert
+            Assert.NotNull(result);
+        }
 
 
     }
