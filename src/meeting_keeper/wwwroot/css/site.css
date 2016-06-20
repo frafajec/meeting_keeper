@@ -410,6 +410,15 @@ textarea {
   text-decoration: none;
   background-color: #FFF;
 }
+.logoFont {
+    font-family: 'Pacifico', cursive;
+}
+
+.homePageLogo {
+    color: rgb(44, 62, 80);
+    font-size: 24px;
+    margin-top: -3px;
+}
 /*Dashboard end*/
 
 #subscribePage .hero-feature i{
