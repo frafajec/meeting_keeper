@@ -5,17 +5,17 @@
     html += '   <input type="text" class="form-control" id="eID-input" style="display: none;" />';
 
     html += '<div class="col-md-6"> <div class="form-group">';
+    html += '       <label for="eStart-input" class="control-label">Start time</label>';
     html += '   <div class="input-group date" id="eStart">';
     html += '       <span class="input-group-addon"> <span class="glyphicon glyphicon-calendar"></span> </span>';
-    html += '       <label for="eStart-input" class="control-label">Start time</label>';
     html += '       <input type="text" class="form-control" id="eStart-input" />';
     html += '   </div>';
     html += '</div> </div>';
 
     html += '<div class="col-md-6"> <div class="form-group">';
+    html += '       <label for="eEnd-input" class="control-label">End time</label>';
     html += '   <div class="input-group date" id="eEnd">';
     html += '       <span class="input-group-addon"> <span class="glyphicon glyphicon-calendar"></span> </span>';
-    html += '       <label for="eEnd-input" class="control-label">End time</label>';
     html += '       <input type="text" class="form-control" id="eEnd-input" />';
     html += '   </div>';
     html += '</div> </div>';
